@@ -13,6 +13,14 @@ class LinkedList {
         this.length = 1;
     }
 
+    printList() {
+        let temp = this.head;
+        while (temp !== null) {
+            console.log(temp.value);
+            temp = temp.next;
+        }
+    }
+
     push(value) {
         const newNode = new Node(value);
         if (!this.head) {
@@ -143,6 +151,21 @@ class LinkedList {
         }
         return this;
     }
-}
 
-let myLinkedList = new LinkedList(1);
+    findMiddleNode() {
+        if (this.length === 0) {
+            return this.head;
+        }
+        if (this.length === 1) {
+            return this.tail;
+        }
+        let temp = this.head;
+        const middle = this.length % 2 === 0 ? (this.length / 2) + 1 : Math.ceil(this.length / 2);
+        for (let i = 0; i < this.length; i++) {
+            if (temp.value === middle) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+    }
+}
