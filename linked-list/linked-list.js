@@ -153,19 +153,12 @@ class LinkedList {
     }
 
     findMiddleNode() {
-        if (this.length === 0) {
-            return this.head;
+        let slow = this.head;
+        let fast = this.head;
+        while (fast !== null && fast.next !== null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        if (this.length === 1) {
-            return this.tail;
-        }
-        let temp = this.head;
-        const middle = this.length % 2 === 0 ? (this.length / 2) + 1 : Math.ceil(this.length / 2);
-        for (let i = 0; i < this.length; i++) {
-            if (temp.value === middle) {
-                return temp;
-            }
-            temp = temp.next;
-        }
+        return slow;
     }
 }
